@@ -37,4 +37,12 @@ public class VisitorMapper {
     private void setVisitorFields(VisitorInput input, Visitor entity) {
         entity.addPublication(repository.findByName(input.getPublicationName()));
     }
+
+    public Visitor deletePublic(VisitorInput input, Visitor entity) {
+       deleteVisitorFields(input, entity);
+       return entity;
+    }
+    private void deleteVisitorFields(VisitorInput input, Visitor entity) {
+        entity.deletePublication(repository.findByName(input.getPublicationName()));
+    }
 }

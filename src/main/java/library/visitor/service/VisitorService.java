@@ -1,5 +1,8 @@
 package library.visitor.service;
 
+import library.publication.dto.input.PublicationUpdateInput;
+import library.publication.dto.output.PublicationOutput;
+import library.publication.entity.Publication;
 import library.visitor.dto.input.VisitorInput;
 import library.visitor.dto.output.VisitorOutput;
 import library.visitor.entity.Visitor;
@@ -54,5 +57,20 @@ public class VisitorService {
                 .orElseThrow(() -> new EntityNotFoundException(format("There is no agent with ID = %s", id)));
     }
 
+    public ResponseEntity<VisitorOutput> updateVisitor(Long id, VisitorInput input) {
+        Visitor visitor = findEntityById(id);
+        Visitor updatedVisitor = mapper.fromInput(input, visitor);
+        Visitor updatedAndSavedVisitor = visitorRepository.save(updatedVisitor);
 
+        return ResponseEntity.ok(
+                mapper.toOutput(updatedAndSavedVisitor));
+    }
+
+    public ResponseEntity<VisitorOutput> delete(Long id, VisitorInput input) {
+        Visitor visitor = findEntityById(id);
+        Visitor visitorDelete = mapper.deletePublic(input, visitor);
+        Visitor visitorDeleteAndUpdate = visitorRepository.save(visitorDelete);
+        return ResponseEntity.ok(
+                mapper.toOutput(visitorDeleteAndUpdate));
+    }
 }

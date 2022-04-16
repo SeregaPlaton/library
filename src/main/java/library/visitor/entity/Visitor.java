@@ -23,4 +23,9 @@ public class Visitor {
         publications.add(publication);
         return publications;
     }
+
+    public List<Publication>  deletePublication(Publication publication) {
+        publications.remove(publication);
+        return publications;
+    }
 }

@@ -1,5 +1,7 @@
 package library.visitor.controller;
 
+import library.publication.dto.input.PublicationUpdateInput;
+import library.publication.dto.output.PublicationOutput;
 import library.visitor.dto.input.VisitorInput;
 import library.visitor.dto.output.VisitorOutput;
 import library.visitor.service.VisitorService;
@@ -57,5 +59,15 @@ public class VisitorController {
     @PostMapping
     public ResponseEntity<VisitorOutput> createVisitor(@RequestBody VisitorInput input) {
         return visitorService.createVisitor(input);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<VisitorOutput> updatePublication(@PathVariable("id") Long id, @RequestBody VisitorInput input) {
+        return visitorService.updateVisitor(id, input);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<VisitorOutput> deletePublic(@PathVariable("id") Long id, @RequestBody VisitorInput input) {
+       return visitorService.delete(id, input);
     }
 }
