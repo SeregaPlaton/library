@@ -2,6 +2,8 @@ package library.publication.service;
 
 
 import library.publication.dto.input.PublicationCreateInput;
+import library.publication.dto.input.PublicationFindName;
+import library.publication.dto.input.PublicationInput;
 import library.publication.dto.input.PublicationUpdateInput;
 import library.publication.dto.output.PublicationOutput;
 import library.publication.entity.Publication;
@@ -60,5 +62,12 @@ public class PublicationService {
     public Publication findEntityById(Long id) {
         return publicationRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(format("There is no agent with ID = %s", id)));
+    }
+
+    public List<PublicationOutput> findPublicationName(String name) {
+        return publicationRepository.searchByName(name)
+                .stream()
+                .map(mapper::toOutput)
+                .collect(Collectors.toList());
     }
 }

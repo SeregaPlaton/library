@@ -12,4 +12,8 @@ import java.util.List;
 public interface PublicationRepository extends JpaRepository<Publication, Long>, PagingAndSortingRepository<Publication, Long> {
 
     Publication findByName(String name);
+
+    @Query("select p from Publication p where p.name like %?1%"
+            + " or p.description like %?1%")
+    List<Publication> searchByName(String name);
 }

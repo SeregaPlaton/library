@@ -1,16 +1,19 @@
 package library.publication.mapper;
 
 import library.publication.dto.input.PublicationCreateInput;
+import library.publication.dto.input.PublicationFindName;
 import library.publication.dto.input.PublicationInput;
 import library.publication.dto.input.PublicationUpdateInput;
 import library.publication.dto.output.PublicationOutput;
 import library.publication.entity.Publication;
+import library.publication.repository.PublicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class PublicationMapper {
+
     public Publication fromInput(PublicationCreateInput input) {
         Publication entity = new Publication();
         setBasicAgentFields(input, entity);
@@ -37,4 +40,5 @@ public class PublicationMapper {
         entity.setDescription(input.getDescription());
         entity.setAmountOfBooks(input.getAmountOfBooks());
     }
+
 }

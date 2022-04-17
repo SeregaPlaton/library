@@ -70,4 +70,10 @@ public class PublicationController {
     public ResponseEntity<PublicationOutput> updatePublication(@PathVariable("id") Long id, @RequestBody PublicationUpdateInput input) {
         return publicationService.updatePublication(id, input);
     }
+
+    @GetMapping("/findName/{name}")
+    public List<PublicationOutput> findPublicationsName(@PathVariable("name") String name) {
+        return publicationService.findPublicationName(name);
+    }
+
 }
