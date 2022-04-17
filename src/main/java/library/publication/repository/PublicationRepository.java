@@ -7,6 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface PublicationRepository extends JpaRepository<Publication, Long>, PagingAndSortingRepository<Publication, Long> {
@@ -16,4 +17,5 @@ public interface PublicationRepository extends JpaRepository<Publication, Long>,
     @Query("select p from Publication p where p.name like %?1%"
             + " or p.description like %?1%")
     List<Publication> searchByName(String name);
+
 }

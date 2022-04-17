@@ -3,6 +3,7 @@ package library.publication.controller;
 import library.publication.dto.input.PublicationCreateInput;
 import library.publication.dto.input.PublicationUpdateInput;
 import library.publication.dto.output.PublicationOutput;
+import library.publication.entity.Publication;
 import library.publication.service.PublicationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

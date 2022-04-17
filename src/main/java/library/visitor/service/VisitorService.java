@@ -1,9 +1,9 @@
 package library.visitor.service;
 
-import library.publication.dto.input.PublicationUpdateInput;
-import library.publication.dto.output.PublicationOutput;
 import library.publication.entity.Publication;
+
 import library.visitor.dto.input.VisitorInput;
+
 import library.visitor.dto.output.VisitorOutput;
 import library.visitor.entity.Visitor;
 import library.visitor.mapper.VisitorMapper;
@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -72,5 +73,8 @@ public class VisitorService {
         Visitor visitorDeleteAndUpdate = visitorRepository.save(visitorDelete);
         return ResponseEntity.ok(
                 mapper.toOutput(visitorDeleteAndUpdate));
+    }
+    public List<Publication> publicationsId() {
+        return visitorRepository.countTakeBooks();
     }
 }

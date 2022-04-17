@@ -1,6 +1,7 @@
 package library.publication.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import library.visitor.entity.Visitor;
 import lombok.Data;
 
@@ -22,8 +23,10 @@ public class Publication {
 
     @Column(name = "DESCRIPTION", length = 1500)
     private String description;
-
+    @JsonManagedReference
     @ManyToMany
+    @JoinTable(name = "publication_visitor", joinColumns = @JoinColumn(name = "publication_id"),
+            inverseJoinColumns = @JoinColumn(name = "visitor_id"))
     private List<Visitor> visitors = new ArrayList<>();
 
     @Column(name = "AMOUNT_OF_BOOKS", nullable = false)

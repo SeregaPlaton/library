@@ -1,9 +1,12 @@
 package library.visitor.controller;
 
-import library.publication.dto.input.PublicationUpdateInput;
-import library.publication.dto.output.PublicationOutput;
+
+import library.publication.entity.Publication;
+
 import library.visitor.dto.input.VisitorInput;
+
 import library.visitor.dto.output.VisitorOutput;
+import library.visitor.entity.Visitor;
 import library.visitor.service.VisitorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -69,5 +72,9 @@ public class VisitorController {
     @DeleteMapping("/{id}")
     public ResponseEntity<VisitorOutput> deletePublic(@PathVariable("id") Long id, @RequestBody VisitorInput input) {
        return visitorService.delete(id, input);
+    }
+    @GetMapping("/fullId")
+    public List<Publication> publicId() {
+        return visitorService.publicationsId();
     }
 }

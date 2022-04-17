@@ -1,12 +1,12 @@
 package library.publication.mapper;
 
 import library.publication.dto.input.PublicationCreateInput;
-import library.publication.dto.input.PublicationFindName;
+
 import library.publication.dto.input.PublicationInput;
 import library.publication.dto.input.PublicationUpdateInput;
 import library.publication.dto.output.PublicationOutput;
 import library.publication.entity.Publication;
-import library.publication.repository.PublicationRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
